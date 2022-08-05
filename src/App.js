@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import * as actions from './redux/actions';
 import { bindActionCreators } from 'redux';
 
-const mapStateToProps = (state) =>{
+function mapStateToProps(state) {
   return { 
     quotes: state.quotes
   }
 }
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch) {
   return bindActionCreators(actions, dispatch);
 } 
 

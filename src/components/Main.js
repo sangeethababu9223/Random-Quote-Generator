@@ -1,5 +1,5 @@
 import { Component } from "react";
-
+import Quote from './Quote';
 class Main extends Component {
     constructor(props){
         super(props);
@@ -7,15 +7,17 @@ class Main extends Component {
             quote: '',
         }
     }
-    componentDidMount(){
-        let quotes= this.props.fetchQuote();
+    pickQuote = () => {
+        let quotes = this.props.quotes;
         let max =  (quotes.length)-1;
         let key = Math.floor(Math.random() * (max + 1));
         let quoteItem = quotes[key];
-        console.log("quote:",quoteItem);
         this.setState({
             quote: quoteItem['quote'],
-        })
+        });
+    }
+    componentDidMount(){
+        this.pickQuote();
     }
     render(){
         return(
@@ -23,12 +25,11 @@ class Main extends Component {
                 <h1>Main Content Here</h1>
                 {
                     this.state.quote ? 
-                    <div>
-                    {this.state.quote }
-                    </div>
+                    <Quote quote={this.state.quote} />
                     :  
                     ''
                 }
+                <button onClick={this.pickQuote}>Get Quote</button>
             </div>
         )
     }

@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { applyMiddleware } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import quoteReducer from './redux/reducer';
+import rootReducer from './redux/reducer';
+import thunk from "redux-thunk";
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const store = configureStore({
-  reducer: quoteReducer
-});
+const store = configureStore(
+  { reducer: rootReducer },
+  applyMiddleware(thunk)
+);
 root.render(
   <React.StrictMode>
     <Provider store={store}>

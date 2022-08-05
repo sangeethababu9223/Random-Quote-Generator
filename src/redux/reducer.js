@@ -1,7 +1,13 @@
-import quotes from '../components/data/quotes';
+import _quotes from '../data/quotes';
+import { combineReducers } from 'redux';
 const PICK = 'PICK';
 
-const quoteReducer = (state=quotes, action) => {
-    return state;
+const quotes = (state=_quotes, action) => {
+    if(action.type===PICK){
+        return state;
+    }else{
+        return state;
+    }
 }
-export default quoteReducer;
+const rootReducer = combineReducers({quotes});
+export default rootReducer;
